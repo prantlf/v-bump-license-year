@@ -16,15 +16,15 @@ Options:
   -m|--message <message>  commit message
   -n|--name <name>        owner of the license (default is git user.name)
   -y|--year <year>        the last year (default is the current one)
-  -d|--dry-run            print the new changes on the console only
-  -v|--verbose            print the new changes on the console too
+  -d|--dry-run            print the changes on the console only
+  -v|--verbose            print the changes on the console too
   -V|--version            print the version of the executable and exits
   -h|--help               print the usage information and exits
 
 The default commit message: "docs: Bump license year".
 
 Examples:
-  $ bump-license-year -n "Ferdinand Prantl"
+  $ bump-license-year
   $ bump-license-year -n "Ferdinand Prantl" -dv'
 
 struct Opts {

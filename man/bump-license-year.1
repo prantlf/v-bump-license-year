@@ -1,0 +1,67 @@
+.TH bump-license-year "1" "March 23, 2025" "" "bump-license-year manual"
+
+.SH NAME
+bump-license-year - bumps the year in LICENSE and README.md files
+
+.SH SYNOPSIS
+.B bump-license-year
+[-m|--message
+.I message
+] [-n|--name
+.I
+name
+] [-y|--year
+.I
+year
+]
+.br
+[-d|--dry-run] [-v|verbose] [-V|--version] [-h|--help]
+.RE
+
+.SH DESCRIPTION
+bump-license-year bumps the last year in the license text in LICENSE and README.md files.
+
+.SH OPTIONS
+.B
+.IP "-m|--message message"
+commit message
+.B
+.IP "-n|--name name"
+owner of the license (default is git user.name)
+.B
+.IP "-y|--year year"
+the last year (default is the current one)
+.B
+.IP "-d|--dry-run"
+print the changes on the console only
+.B
+.IP "-v|--verbose"
+print the changes on the console too
+.B
+.IP "-V|--version"
+print the version of the executable and exit
+.B
+.IP "-h|--help"
+print the usage information and exit
+
+.RE
+The default commit message: "docs: Bump license year".
+
+.SH EXAMPLES
+.B
+.IP "bump-license-year"
+Bump the last year in the license text in LICENSE and README.md files.
+.B
+.IP "bump-license-year -n 'Ferdinand Prantl' -dv"
+Bump the last year in the license text in LICENSE and README.md files.
+Use the specific user name, print verbose messages and do not actually
+make the changes - dry run.
+
+.SH BUGS
+bump-license-year's bug tracker is located at <https://github.com/prantlf/v-bump-license-year/issues>
+
+.SH DOCUMENTATION
+See the website for documentation <https://github.com/prantlf/v-bump-license-year#readme>
+
+.SH AUTHOR
+Currently maintained by Ferdinand Prantl <prantlf@gmail.com>
