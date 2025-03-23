@@ -94,6 +94,11 @@ fn bump_license_year(file_name string, name string, year string, two_year_re &Re
 	d.log('reading "%s"', dfile_name)
 	lines := read_lines(file_name)!
 	d.log('received %d lines', lines.len)
+	dry_run := if opts.dry_run {
+		' (dry run)'
+	} else {
+		''
+	}
 	mut new_lines := []string{len: 0, cap: lines.len + 1}
 	mut different := false
 	mut replaced := false
@@ -104,6 +109,7 @@ fn bump_license_year(file_name string, name string, year string, two_year_re &Re
 		}
 		if new_line := two_year_re.replace(line, ' $1-${year} ${name}', pcre2.opt_replace_groups) {
 			d.log('replacing "%s" with "%s"', line, new_line)
+			println('Replacing ${file_name}${dry_run}: ${new_line}')
 			new_lines << new_line
 			different = line != new_line
 			replaced = true
@@ -111,6 +117,7 @@ fn bump_license_year(file_name string, name string, year string, two_year_re &Re
 			if err is NoMatch {
 				if new_line := one_year_re.replace(line, ' ${year} ${name}', pcre2.opt_replace_groups) {
 					d.log('replacing "%s" with "%s"', line, new_line)
+					println('Replacing ${file_name}${dry_run}: ${new_line}')
 					new_lines << new_line
 					different = line != new_line
 					replaced = true
@@ -119,6 +126,7 @@ fn bump_license_year(file_name string, name string, year string, two_year_re &Re
 						new_lines << line
 					} else if err is NoReplace {
 						d.log('no need to replace "%s"', line)
+						println('Retaining ${file_name}${dry_run}: ${line}')
 						new_lines << line
 						different = false
 						replaced = true
@@ -128,6 +136,7 @@ fn bump_license_year(file_name string, name string, year string, two_year_re &Re
 				}
 			} else if err is NoReplace {
 				d.log('no need to replace "%s"', line)
+				println('Retaining ${file_name}${dry_run}: ${line}')
 				new_lines << line
 				different = false
 				replaced = true
@@ -138,18 +147,13 @@ fn bump_license_year(file_name string, name string, year string, two_year_re &Re
 	}
 	if replaced {
 		if different {
-			if opts.dry_run {
-				println('The license line in "${file_name}" was replaced (dry run).')
-			} else {
-				println('The license line in "${file_name}" was replaced.')
+			if !opts.dry_run {
 				d.log('writing "%s"', dfile_name)
 				new_lines << ''
 				new_text := new_lines.join('\n')
 				write_file(file_name, new_text)!
 				return true
 			}
-		} else {
-			println('No replacement in the license line in "${file_name}".')
 		}
 	} else {
 		println('No license line found in "${file_name}".')
