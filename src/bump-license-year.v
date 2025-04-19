@@ -115,7 +115,7 @@ fn bump_license_year(file_name string, name string, year string, two_year_re &Re
 			replaced = true
 		} else {
 			if err is NoMatch {
-				if new_line := one_year_re.replace(line, ' ${year} ${name}', pcre2.opt_replace_groups) {
+				if new_line := one_year_re.replace(line, ' $1-${year} ${name}', pcre2.opt_replace_groups) {
 					d.log('replacing "%s" with "%s"', line, new_line)
 					println('Replacing ${file_name}${dry_run}: ${new_line}')
 					new_lines << new_line
