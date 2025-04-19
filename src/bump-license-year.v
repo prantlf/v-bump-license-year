@@ -6,7 +6,7 @@ import prantlf.debug { new_debug }
 import prantlf.osutil { execute }
 import prantlf.pcre2 { NoMatch, NoReplace, RegEx, pcre2_compile }
 
-const version = '0.2.0'
+const version = '0.2.1'
 
 const usage = 'Bumps the last year in the license text in LICENSE and README.md files.
 

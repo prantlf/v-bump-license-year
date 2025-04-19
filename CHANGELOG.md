@@ -1,5 +1,11 @@
 # Changes
 
+## [0.2.1](https://github.com/prantlf/v-bump-license-year/compare/v0.2.0...v0.2.1) (2025-04-19)
+
+### Bug Fixes
+
+* Retain the previous year ([f1f968a](https://github.com/prantlf/v-bump-license-year/commit/f1f968add977a6e734dc1088c5c4592cf8fe36d8))
+
 ## [0.2.0](https://github.com/prantlf/v-bump-license-year/compare/v0.1.0...v0.2.0) (2025-03-23)
 
 ### Features
