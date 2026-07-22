@@ -12,7 +12,6 @@ on:
   pull_request:
 
 jobs:
-
   linux:
     runs-on: ubuntu-latest
     outputs:
@@ -137,6 +136,9 @@ jobs:
 
   release:
     if: ${{ github.ref_name == 'master' && needs.linux.outputs.changed == 'true' }}
+    permissions:
+      actions: write
+      contents: write
     needs:
       - linux
       - linux-arm
