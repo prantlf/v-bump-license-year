@@ -1,5 +1,11 @@
 # Changes
 
+## [0.3.0](https://github.com/prantlf/v-bump-license-year/compare/v0.2.1...v0.3.0) (2026-07-22)
+
+### Features
+
+* Adapt to breaking changes in V ([ec69682](https://github.com/prantlf/v-bump-license-year/commit/ec69682e3c00332ca11459a87e28c6dc20d67f47))
+
 ## [0.2.1](https://github.com/prantlf/v-bump-license-year/compare/v0.2.0...v0.2.1) (2025-04-19)
 
 ### Bug Fixes
